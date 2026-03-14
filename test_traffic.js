@@ -24,10 +24,18 @@ async function main() {
     const users = [];
     const TOTAL_USERS = 20;
 
+    const testNames = [
+        "김민준", "이서준", "박도윤", "최예준", "정시우",
+        "강하준", "조지호", "윤서진", "장현우", "임지안",
+        "지서아", "하윤서", "오지유", "송하은", "신수아",
+        "안지민", "서지우", 
+        "John Doe", "Jane Smith", "Michael Brown"
+    ];
+
     for (let i = 1; i <= TOTAL_USERS; i++) {
         const email = `testuser${i}@yoga.com`;
         const password = 'password123';
-        const name = `테스트회원${i}`;
+        const name = testNames[i-1] || `테스트회원${i}`;
         const phone = `010-1234-${i.toString().padStart(4, '0')}`;
         
         console.log(`⏳ 가입 시도 중: ${email}...`);
