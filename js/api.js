@@ -4,7 +4,7 @@
  */
 
 // TODO: User must replace this with the generated Google Apps Script Web App URL
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz2vxj6mV-F7lWVWXmRnFt5jDRgQv2btN_UVu_F9SPiKptElXSVIp7VKwEofVS2HLP8/exec";
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx7b5QXThfgqkOcBfHwAx6x7h4B4FhnrGeuT6v8SqRIdkOcbZXe2N4qtFRYNgz45EQh/exec";
 
 const api = {
     // 공통 Fetch 함수
