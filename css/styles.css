@@ -253,6 +253,13 @@ header {
   margin-top: 2rem;
 }
 
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 /* Colorful Section Backgrounds */
 .section-pink { background-color: var(--pink); border-top: var(--border); border-bottom: var(--border); }
 .section-yellow { background-color: var(--yellow); border-top: var(--border); border-bottom: var(--border); }
@@ -405,7 +412,7 @@ tr:hover {
     flex-wrap: wrap;
   }
 
-  .grid-3 {
+  .grid-3, .grid-2 {
     grid-template-columns: 1fr;
   }
 }
