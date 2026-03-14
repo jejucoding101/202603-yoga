@@ -182,14 +182,14 @@ header {
   align-items: center;
 }
 
-.nav-links a {
+.nav-links a:not(.btn) {
   font-weight: 600;
   color: var(--black);
   padding: 0.4rem 0;
   border-bottom: 2px solid transparent;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.btn):hover {
   border-bottom-color: var(--pink);
 }
 
