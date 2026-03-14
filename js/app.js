@@ -150,6 +150,14 @@ const app = {
         if (result && result.success) {
             this.renderPasses(result.data.passes);
             this.renderHistory(result.data.bookings);
+            
+            // 새 활동 요약 렌더링
+            if(result.data.stats) {
+                document.getElementById('user-stat-total').innerText = result.data.stats.total_bookings;
+                document.getElementById('user-stat-login').innerText = result.data.stats.login_count;
+                document.getElementById('user-stat-month').innerText = result.data.stats.this_month_bookings;
+                document.getElementById('user-stat-upcoming').innerText = result.data.stats.upcoming_bookings;
+            }
         } else {
             console.error("Dashboard 로드 실패");
         }
@@ -399,9 +407,48 @@ const app = {
     async loadAdminDashboard() {
         const res = await window.api.adminGetDashboard();
         if(res.success) {
-            document.getElementById('stat-users').innerText = res.data.totalUsers;
-            document.getElementById('stat-today').innerText = res.data.todayClassesCount;
-            document.getElementById('stat-bookings').innerText = res.data.totalBookings;
+            const d = res.data;
+            document.getElementById('stat-new-users').innerText = d.newUsersThisMonth || 0;
+            document.getElementById('stat-today').innerText = d.todayClassesCount || 0;
+            document.getElementById('stat-today-rate').innerText = d.todayAvgBookingRate || 0;
+            document.getElementById('stat-pending').innerText = d.pendingBookings || 0;
+
+            const renderList = (id, items, emptyMsg, htmlFn) => {
+                const ul = document.getElementById(id);
+                if (!items || items.length === 0) {
+                    ul.innerHTML = `<li style="padding: 0.5rem 0; color: #888; border-bottom: none;">${emptyMsg}</li>`;
+                    return;
+                }
+                ul.innerHTML = items.map(htmlFn).join('');
+            };
+
+            renderList('list-expiring', d.expiringPasses, "현재 만료 임박 수강권이 없습니다.", 
+                p => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #ffcdd2;">
+                    <strong>${p.user_name}</strong> <span style="font-size:0.85rem; color:#666;">(${p.user_phone})</span><br>
+                    <span style="color:#d32f2f; font-weight:600;">${p.pass_type} - 잔여: ${p.remaining_count}회 (~${new Date(p.expiry_date).toLocaleDateString()})</span>
+                </li>`
+            );
+
+            renderList('list-inactive', d.inactiveUsers, "장기 미출석 회원이 없습니다.", 
+                u => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #ffe082;">
+                    <strong>${u.user_name}</strong> <span style="font-size:0.85rem; color:#666;">(${u.user_phone})</span><br>
+                    <span style="color:#e65100; font-size:0.9rem;">마지막 수강/접속: ${new Date(u.last_login).toLocaleDateString()}</span>
+                </li>`
+            );
+
+            renderList('list-top-users', d.topEngagedUsers, "활동 데이터가 없습니다.", 
+                u => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #c8e6c9;">
+                    <span style="display:inline-block; width:20px;">🥇</span> <strong style="color:var(--primary);">${u.name}</strong> 
+                    <span style="font-size:0.85rem; color:#555; margin-left:0.5rem;">(${u.login_count}회 접속)</span>
+                </li>`
+            );
+
+            renderList('list-top-classes', d.topClasses, "수업 데이터가 없습니다.", 
+                c => `<li style="padding: 0.5rem 0; border-bottom: 1px solid #bbdefb;">
+                    <span style="display:inline-block; width:20px;">🔥</span> <strong>${c.class_name}</strong> <span style="font-size:0.85rem; color:#666;">(${c.instructor})</span><br>
+                    <span style="font-size:0.85rem; color:var(--blue); margin-left:1.5rem; font-weight:600;">누적 예약 ${c.count}건</span>
+                </li>`
+            );
         }
     },
 

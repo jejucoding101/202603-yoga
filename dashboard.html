@@ -35,7 +35,25 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Dashboard View -->
+            <!-- Dashboard View -->
             <section id="view-dashboard" class="view-section">
+                <h2>나의 활동 요약</h2>
+                <div class="grid-3" style="margin-top: 1rem; margin-bottom: 2.5rem;">
+                    <div class="card" style="text-align: center; padding: 1.5rem;">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">나의 누적 수강</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); line-height: 1.1;"><span id="user-stat-total">0</span><span style="font-size: 1rem; color: #666; font-weight: 500;"> 회</span></div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 0.5rem;">(총 앱 접속: <span id="user-stat-login">0</span>회)</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: 1.5rem;">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">이번 달 수강</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--pink); line-height: 1.1;"><span id="user-stat-month">0</span><span style="font-size: 1rem; color: #666; font-weight: 500;"> 회</span></div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: 1.5rem;">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">다가오는 수업</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--blue); line-height: 1.1;"><span id="user-stat-upcoming">0</span><span style="font-size: 1rem; color: #666; font-weight: 500;"> 건</span></div>
+                    </div>
+                </div>
+
                 <h2>나의 수강권</h2>
                 <div id="passes-container" class="grid-3" style="margin-top: 1rem;">
                     <!-- JS Rendering -->

@@ -36,19 +36,57 @@
         <main class="main-content">
             <!-- Overview View -->
             <section id="view-overview" class="view-section">
-                <h2>전체 현황</h2>
-                <div class="grid-3" style="margin-top: 1rem;">
-                    <div class="card" style="text-align: center;">
-                        <h4 style="color: var(--text-muted); font-size: 1rem;">총 회원수</h4>
-                        <div id="stat-users" style="font-size: 3rem; font-weight: 700; color: var(--primary);">0</div>
+                <h2>핵심 운영 지표 (이번 달 기준)</h2>
+                <div class="grid-3" style="margin-top: 1rem; margin-bottom: 2rem;">
+                    <div class="card" style="text-align: center; padding: 1.5rem; border-color: var(--blue);">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">신규 가입 회원</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--blue); line-height: 1.1;"><span id="stat-new-users">0</span><span style="font-size: 1rem; color: #666; font-weight: 500;"> 명</span></div>
                     </div>
-                    <div class="card" style="text-align: center;">
-                        <h4 style="color: var(--text-muted); font-size: 1rem;">오늘 예정된 수업</h4>
-                        <div id="stat-today" style="font-size: 3rem; font-weight: 700; color: var(--secondary);">0</div>
+                    <div class="card" style="text-align: center; padding: 1.5rem; border-color: var(--pink);">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">오늘 진행 수업 (평균 예약률)</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--pink); line-height: 1.1;"><span id="stat-today">0</span><span style="font-size: 1rem; color: #666; font-weight: 500; margin-left: 0.3rem;">(<span id="stat-today-rate">0</span>%)</span></div>
                     </div>
-                    <div class="card" style="text-align: center;">
-                        <h4 style="color: var(--text-muted); font-size: 1rem;">총 예약 건수</h4>
-                        <div id="stat-bookings" style="font-size: 3rem; font-weight: 700; color: var(--primary);">0</div>
+                    <div class="card" style="text-align: center; padding: 1.5rem; border-color: var(--primary);">
+                        <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">현재 전체 예약(대기) 건수</h4>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); line-height: 1.1;"><span id="stat-pending">0</span><span style="font-size: 1rem; color: #666; font-weight: 500;"> 건</span></div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: #d32f2f; font-size: 1.2rem;">🚨 수강권 만료 임박 (잔여 2회 또는 7일 내)</h3>
+                        <div class="card" style="padding: 1rem; height: 250px; overflow-y: auto; background-color: #fffafb; border-color: #ffcdd2;">
+                            <ul id="list-expiring" style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">로딩중...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: #f57c00; font-size: 1.2rem;">⚠️ 장기 미출석 (최근 30일 간 수강 없음)</h3>
+                        <div class="card" style="padding: 1rem; height: 250px; overflow-y: auto; background-color: #fff8e1; border-color: #ffe082;">
+                            <ul id="list-inactive" style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">로딩중...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="gap: 2rem;">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--primary); font-size: 1.2rem;">👤 가장 활동적인 회원 (로그인 기준 Top 5)</h3>
+                        <div class="card" style="padding: 1rem; border-color: #c8e6c9;">
+                            <ul id="list-top-users" style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">로딩중...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--blue); font-size: 1.2rem;">🏆 인기 수업 Top 3 (예약 건수 기준)</h3>
+                        <div class="card" style="padding: 1rem; border-color: #bbdefb;">
+                            <ul id="list-top-classes" style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">로딩중...</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
