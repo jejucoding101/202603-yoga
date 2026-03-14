@@ -135,6 +135,7 @@ a {
   background-color: transparent;
   border: var(--border);
   color: var(--black);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-outline:hover {
