@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Yoga Sanctuary</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background-color: var(--yellow);">
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">The Yoga Sanctuary</a>
+        </div>
+    </header>
+
+    <div class="container text-center auth-container">
+        <h2 id="auth-title">로그인 👋</h2>
+        <p id="auth-subtitle" style="color: var(--black); opacity: 0.7;">다시 만나서 반가워요.</p>
+        
+        <div class="card">
+            <form id="login-form">
+                <div class="form-group" id="name-group" style="display: none;">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" class="form-control" placeholder="홍길동">
+                </div>
+                <div class="form-group" id="phone-group" style="display: none;">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="010-0000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" class="form-control" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="submit-btn">로그인</button>
+                <div id="auth-msg" style="margin-top: 1rem; color: #d32f2f; font-size: 0.9rem;"></div>
+            </form>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem;">
+                <span id="toggle-text">아직 회원이 아니신가요?</span> 
+                <a href="#" id="toggle-auth" style="color: var(--secondary); font-weight: 600; text-decoration: underline;">회원가입하기</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

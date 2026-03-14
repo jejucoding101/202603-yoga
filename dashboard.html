@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - The Yoga Sanctuary</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">The Yoga Sanctuary</a>
+            <nav class="nav-links">
+                <span id="user-greeting" style="font-weight: 600; color: var(--primary);"></span>
+                <a href="#" id="logout-btn" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active" data-target="dashboard">내 수강권</a></li>
+                <li><a href="#" data-target="classes">수업 예약</a></li>
+                <li><a href="#" data-target="history">예약 내역</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section">
+                <h2>나의 수강권</h2>
+                <div id="passes-container" class="grid-3" style="margin-top: 1rem;">
+                    <!-- JS Rendering -->
+                    <p style="color: #999;">로딩중...</p>
+                </div>
+            </section>
+
+            <!-- Classes View -->
+            <section id="view-classes" class="view-section hidden">
+                <h2>예약 가능한 수업</h2>
+                <div class="table-responsive">
+                    <table id="classes-table">
+                        <thead>
+                            <tr>
+                                <th>날짜</th>
+                                <th>시간</th>
+                                <th>수업명</th>
+                                <th>강사</th>
+                                <th>예약현황</th>
+                                <th>액션</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS Rendering -->
+                            <tr><td colspan="6">로딩중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- History View -->
+            <section id="view-history" class="view-section hidden">
+                <h2>나의 예약 내역</h2>
+                <div class="table-responsive">
+                    <table id="bookings-table">
+                        <thead>
+                            <tr>
+                                <th>수업일</th>
+                                <th>시간</th>
+                                <th>수업명</th>
+                                <th>예약상태</th>
+                                <th>취소</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS Rendering -->
+                            <tr><td colspan="5">로딩중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.app) window.app.initDashboard();
+        });
+    </script>
+</body>
+</html>

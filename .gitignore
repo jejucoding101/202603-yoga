@@ -1,0 +1,10 @@
+# Backend (GAS code - managed separately)
+backend/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

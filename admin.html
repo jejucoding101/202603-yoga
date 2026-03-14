@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - The Yoga Sanctuary</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header style="background-color: var(--primary); padding: 1rem 0;">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="color: white;">Admin Panel</a>
+            <nav class="nav-links">
+                <span id="admin-greeting" style="color: rgba(255,255,255,0.8);"></span>
+                <a href="#" id="admin-logout-btn" class="btn btn-outline" style="color: white; border-color: white; padding: 0.4rem 1rem; font-size: 0.9rem;">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" style="background-color: #f9f9f9;">
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active" data-target="overview">대시보드 요약</a></li>
+                <li><a href="#" data-target="users">회원 및 수강권 관리</a></li>
+                <li><a href="#" data-target="classes">수업 관리</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview View -->
+            <section id="view-overview" class="view-section">
+                <h2>전체 현황</h2>
+                <div class="grid-3" style="margin-top: 1rem;">
+                    <div class="card" style="text-align: center;">
+                        <h4 style="color: var(--text-muted); font-size: 1rem;">총 회원수</h4>
+                        <div id="stat-users" style="font-size: 3rem; font-weight: 700; color: var(--primary);">0</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h4 style="color: var(--text-muted); font-size: 1rem;">오늘 예정된 수업</h4>
+                        <div id="stat-today" style="font-size: 3rem; font-weight: 700; color: var(--secondary);">0</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h4 style="color: var(--text-muted); font-size: 1rem;">총 예약 건수</h4>
+                        <div id="stat-bookings" style="font-size: 3rem; font-weight: 700; color: var(--primary);">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users View -->
+            <section id="view-users" class="view-section hidden">
+                <h2>회원 목록 및 수강권 관리</h2>
+                
+                <!-- 수강권 부여 폼 -->
+                <div class="card" style="margin-top: 1rem; background-color: var(--bg-color);">
+                    <h4>수강권 부여</h4>
+                    <p id="selected-user-info" style="font-size: 0.85rem; color: var(--secondary); margin-top: 0.5rem; font-weight: 600;">아래 회원 목록에서 회원을 클릭하여 선택하세요.</p>
+                    <form id="grant-pass-form" style="display: flex; gap: 1rem; align-items: flex-end; margin-top: 1rem; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <label style="font-size: 0.8rem;">회원 선택</label>
+                            <input type="text" id="pass-userid" class="form-control" placeholder="회원을 클릭하세요" required readonly style="background-color: #f0f0f0; cursor: pointer;">
+                            <input type="hidden" id="pass-username">
+                        </div>
+                        <div style="flex: 1; min-width: 150px;">
+                            <label style="font-size: 0.8rem;">수강권 종류 <button type="button" id="manage-pass-types-btn" style="border:none; background:none; color: var(--secondary); cursor:pointer; font-size: 0.8rem; text-decoration: underline;">관리</button></label>
+                            <select id="pass-type" class="form-control">
+                                <!-- JS에서 동적 렌더링 -->
+                            </select>
+                        </div>
+                        <div style="width: 100px;">
+                            <label style="font-size: 0.8rem;">횟수</label>
+                            <input type="number" id="pass-count" class="form-control" value="10" min="1" required>
+                        </div>
+                        <div style="width: 120px;">
+                            <label style="font-size: 0.8rem;">유효기간(일)</label>
+                            <input type="number" id="pass-days" class="form-control" value="30" min="1" required>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">부여하기</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 2rem;">
+                    <table id="admin-users-table">
+                        <thead>
+                            <tr>
+                                <th>가입일</th>
+                                <th>User ID</th>
+                                <th>이름</th>
+                                <th>연락처</th>
+                                <th>보유 수강권 (잔여)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS Rendering -->
+                            <tr><td colspan="5">로딩중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Classes View -->
+            <section id="view-classes" class="view-section hidden">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>수업 일정 관리</h2>
+                    <button id="toggle-class-form" class="btn btn-secondary" style="padding: 0.5rem 1rem;">새 수업 등록</button>
+                </div>
+
+                <!-- 수업 등록 폼 -->
+                <div id="create-class-panel" class="card hidden" style="margin-top: 1rem; background-color: var(--bg-color);">
+                    <h4>수업 등록하기</h4>
+                    <form id="create-class-form" style="display: flex; gap: 1rem; align-items: flex-end; margin-top: 1rem; flex-wrap: wrap;">
+                        <div style="flex: 2; min-width: 150px;">
+                            <label style="font-size: 0.8rem;">수업명</label>
+                            <input type="text" id="add-classname" class="form-control" required placeholder="예: 힐링 요가">
+                        </div>
+                        <div style="flex: 1; min-width: 100px;">
+                            <label style="font-size: 0.8rem;">강사명</label>
+                            <input type="text" id="add-instructor" class="form-control" required placeholder="강사 이름">
+                        </div>
+                        <div style="flex: 1; min-width: 130px;">
+                            <label style="font-size: 0.8rem;">날짜</label>
+                            <input type="date" id="add-date" class="form-control" required>
+                        </div>
+                        <div style="flex: 1; min-width: 100px;">
+                            <label style="font-size: 0.8rem;">시간</label>
+                            <select id="add-time" class="form-control" required>
+                                <!-- JS에서 5분 간격 옵션 생성 -->
+                            </select>
+                        </div>
+                        <div style="width: 80px;">
+                            <label style="font-size: 0.8rem;">정원</label>
+                            <input type="number" id="add-capacity" class="form-control" value="5" min="1" required>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">등록</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 2rem;">
+                    <table id="admin-classes-table">
+                        <thead>
+                            <tr>
+                                <th>날짜</th>
+                                <th>시간</th>
+                                <th>수업명</th>
+                                <th>강사</th>
+                                <th>예약 현황</th>
+                                <th>상태</th>
+                                <th>예약자 명단</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS Rendering -->
+                            <tr><td colspan="7">로딩중...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 예약자 명단 모달 (심플 인라인) -->
+                <div id="booking-list-panel" class="card hidden" style="margin-top: 2rem; border: 2px solid var(--secondary);">
+                    <div>
+                        <h4 style="display: inline-block; margin-right: 1rem;">선택된 수업의 예약자 명단</h4>
+                        <button id="close-booking-list" class="btn btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;">닫기</button>
+                    </div>
+                    <ul id="booking-list-ul" style="margin-top: 1rem; padding-left: 1.5rem; line-height: 1.8;">
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.app) window.app.initAdmin();
+        });
+    </script>
+</body>
+</html>

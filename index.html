@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Yoga Sanctuary</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">The Yoga Sanctuary</a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#classes">Classes</a>
+                <a href="login.html" class="btn btn-primary" id="nav-login-btn" style="padding: 0.5rem 1.2rem;">Log In</a>
+                <a href="dashboard.html" class="btn btn-secondary hidden" id="nav-dashboard-btn" style="padding: 0.5rem 1.2rem;">My Page</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Yellow background like Gumroad -->
+    <!-- Hero Section - Video Background -->
+    <section class="hero" style="position: relative; min-height: 90vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0; background-color: #000;">
+        <!-- 비디오 배경 -->
+        <video id="hero-video" autoplay muted playsinline
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            <source src="images/hero1.mp4" type="video/mp4">
+        </video>
+        <!-- 어두운 오버레이 -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 1;"></div>
+        <!-- 텍스트 콘텐츠 -->
+        <div class="container" style="position: relative; z-index: 2; text-align: left; max-width: 700px; margin-left: 8%;">
+            <h1 style="color: #fff; font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.2rem; text-shadow: 0 2px 20px rgba(0,0,0,0.3);">Find Your<br>Inner Peace</h1>
+            <p style="color: rgba(255,255,255,0.85); font-size: 1.2rem; max-width: 480px; margin-bottom: 2rem;">프라이빗 요가 & PT 스튜디오.<br>오직 나에게 집중하는 고즈넉한 시간을 경험하세요.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="login.html" class="btn btn-secondary" style="font-size: 1.05rem; padding: 0.9rem 2rem;">지금 시작하기</a>
+                <a href="#classes" class="btn btn-outline" style="font-size: 1.05rem; padding: 0.9rem 2rem; border-color: #fff; color: #fff;">프로그램 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 비디오 순차 재생 스크립트 -->
+    <script>
+        (function() {
+            const videos = ['images/hero1.mp4', 'images/hero2.mp4'];
+            let currentIndex = 0;
+            const videoEl = document.getElementById('hero-video');
+            if (!videoEl) return;
+
+            videoEl.addEventListener('ended', function() {
+                currentIndex = (currentIndex + 1) % videos.length;
+                videoEl.src = videos[currentIndex];
+                videoEl.play();
+            });
+        })();
+    </script>
+
+    <!-- Programs Section - Pink background -->
+    <section class="section-pink p-4" id="classes">
+        <div class="container text-center">
+            <h2>Our Programs ✨</h2>
+            <p style="color: var(--black); opacity: 0.7;">다양한 프리미엄 클래스와 수강권을 만나보세요.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div style="height: 180px; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; border: 2px solid #000;">
+                        <img src="images/private_pt.png" alt="Private 1:1 PT" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Private 1:1 PT 💪</h3>
+                    <p>체형 교정과 근력 강화를 위한 맞춤형 1:1 레슨.</p>
+                </div>
+                <div class="card">
+                    <div style="height: 180px; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; border: 2px solid #000;">
+                        <img src="images/meditation_yoga.png" alt="Meditation Yoga" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Meditation Yoga 🧘</h3>
+                    <p>호흡에 집중하며 스트레스를 낮추는 그룹 요가 명상 클래스.</p>
+                </div>
+                <div class="card">
+                    <div style="height: 180px; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; border: 2px solid #000;">
+                        <img src="images/monthly_pass.png" alt="Monthly Pass" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Monthly Pass 🎫</h3>
+                    <p>여유로운 시간 언제든 방문하여 즐길 수 있는 월 무제한 수강권.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="p-4 bg-white" id="about" style="border-bottom: 2px solid #000;">
+        <div class="container text-center">
+            <h2>왜 The Yoga Sanctuary인가요?</h2>
+            <div class="grid-3" style="margin-top: 2rem;">
+                <div class="card" style="background-color: var(--yellow);">
+                    <h3>🌿 프라이빗 공간</h3>
+                    <p style="color: var(--black);">오직 나만을 위한 조용하고 아늑한 프라이빗 스튜디오.</p>
+                </div>
+                <div class="card" style="background-color: var(--mint);">
+                    <h3>👩‍🏫 전문 강사진</h3>
+                    <p style="color: var(--black);">국제 자격증을 보유한 경력 10년 이상의 전문 강사.</p>
+                </div>
+                <div class="card" style="background-color: var(--blue);">
+                    <h3>📱 간편 예약</h3>
+                    <p style="color: var(--black);">원하는 시간에 온라인으로 간편하게 예약하고 관리.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 1. Scrolling Text Banner (Marquee) ===== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <span>Yoga</span><span class="dot">·</span>
+            <span>Meditation</span><span class="dot">·</span>
+            <span>Personal Training</span><span class="dot">·</span>
+            <span>Healing</span><span class="dot">·</span>
+            <span>Flexibility</span><span class="dot">·</span>
+            <span>Mindfulness</span><span class="dot">·</span>
+            <span>Balance</span><span class="dot">·</span>
+            <span>Strength</span><span class="dot">·</span>
+            <!-- 복제 (무한 스크롤용) -->
+            <span>Yoga</span><span class="dot">·</span>
+            <span>Meditation</span><span class="dot">·</span>
+            <span>Personal Training</span><span class="dot">·</span>
+            <span>Healing</span><span class="dot">·</span>
+            <span>Flexibility</span><span class="dot">·</span>
+            <span>Mindfulness</span><span class="dot">·</span>
+            <span>Balance</span><span class="dot">·</span>
+            <span>Strength</span><span class="dot">·</span>
+        </div>
+    </div>
+
+    <!-- ===== 2. Instructors Section ===== -->
+    <section class="section-blue p-4">
+        <div class="container text-center">
+            <h2>Our Instructors 🧑‍🏫</h2>
+            <p style="color: var(--black); opacity: 0.7;">경험과 열정으로 당신을 안내하는 전문 강사진.</p>
+            <div class="grid-3">
+                <div class="instructor-card">
+                    <img src="images/i1.jpg" alt="김서연 강사">
+                    <div class="info">
+                        <h3>김서연</h3>
+                        <div class="role">요가 · 명상 전문</div>
+                        <p>국제요가지도자(RYT-500) | 경력 12년<br>아쉬탕가·빈야사 전문</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="images/i2.jpg" alt="박준호 강사">
+                    <div class="info">
+                        <h3>박준호</h3>
+                        <div class="role">PT · 체형교정 전문</div>
+                        <p>NSCA-CPT 인증 | 경력 8년<br>체형분석·재활운동 전문</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="images/i3.jpg" alt="이하늘 강사">
+                    <div class="info">
+                        <h3>이하늘</h3>
+                        <div class="role">필라테스 · 코어 전문</div>
+                        <p>PMA 인증 | 경력 10년<br>산전산후·코어강화 전문</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. FAQ Accordion ===== -->
+    <section class="p-4 bg-white" style="border-bottom: 2px solid #000;">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="text-center">자주 묻는 질문 💬</h2>
+            <p class="text-center" style="margin-bottom: 2rem;">궁금한 점이 있으시다면 먼저 확인해보세요.</p>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>첫 방문인데 무엇을 준비해야 하나요?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p style="margin:0; color: var(--text-muted);">편한 운동복과 개인 물병만 챙겨오시면 됩니다. 요가 매트와 소도구는 스튜디오에서 모두 제공합니다. 수업 10분 전까지 오시면 충분합니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>예약은 어떻게 하나요?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p style="margin:0; color: var(--text-muted);">회원가입 후 마이페이지 → 수업 예약 메뉴에서 원하는 날짜와 시간의 수업을 선택하여 예약할 수 있습니다. 예약 취소도 마이페이지에서 간편하게 가능합니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>수강권은 어떤 종류가 있나요?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p style="margin:0; color: var(--text-muted);">1:1 PT, 명상 요가, 월 무제한 이용권(Monthly Pass) 등 다양한 수강권을 제공합니다. 각 수강권은 횟수와 유효기간이 다르며, 관리자에게 문의하시면 자세히 안내받으실 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>주차가 가능한가요?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p style="margin:0; color: var(--text-muted);">건물 내 지하주차장을 이용하실 수 있으며, 수업 시간 동안 2시간 무료 주차가 가능합니다. 차량번호를 프론트에 알려주시면 처리해 드립니다.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    <span>체험 수업이 가능한가요?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p style="margin:0; color: var(--text-muted);">네! 첫 방문 고객에 한해 1회 무료 체험 수업을 제공합니다. 전화 또는 온라인으로 사전 예약 후 방문해 주세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. Location / Map + Contact ===== -->
+    <section class="section-mint p-4">
+        <div class="container">
+            <h2 class="text-center">찾아오는 길 📍</h2>
+            <p class="text-center" style="color: var(--black); opacity: 0.7;">여러분을 기다리고 있습니다.</p>
+
+            <div class="location-grid">
+                <div class="map-container">
+                    <!-- 제주시 연화로2길 4 -->
+                    <iframe
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=제주특별자치도+제주시+연화로2길+4&zoom=17"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item" style="background-color: var(--yellow);">
+                        <h4>🏠 주소</h4>
+                        <p>제주특별자치도 제주시<br>연화로2길 4, 303호</p>
+                    </div>
+                    <div class="contact-item" style="background-color: var(--pink);">
+                        <h4>📞 전화</h4>
+                        <p>010-6452-3101</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🕐 운영시간</h4>
+                        <p>평일 06:00 - 22:00<br>주말 08:00 - 18:00<br>공휴일 휴무</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>✉️ 이메일</h4>
+                        <p>hello@yogasanctuary.kr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--black); color: white; text-align: center; padding: 3rem 0;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 0.5rem; font-size: 1.8rem;">The Yoga Sanctuary</h2>
+            <p style="color: rgba(255,255,255,0.6);">프라이빗 요가 & PT 스튜디오</p>
+            <p style="font-size: 0.85rem; margin-top: 2rem; color: rgba(255,255,255,0.4);">&copy; 2026 The Yoga Sanctuary. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('yoga_user'));
+            if (user) {
+                document.getElementById('nav-login-btn').classList.add('hidden');
+                document.getElementById('nav-dashboard-btn').classList.remove('hidden');
+                if (user.role === 'admin') {
+                    document.getElementById('nav-dashboard-btn').href = 'admin.html';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
