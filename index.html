@@ -95,26 +95,73 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="p-4 bg-white" id="about" style="border-bottom: 2px solid #000;">
-        <div class="container text-center">
-            <h2>왜 The Yoga Sanctuary인가요?</h2>
-            <div class="grid-3" style="margin-top: 2rem;">
-                <div class="card" style="background-color: var(--yellow);">
-                    <h3>🌿 프라이빗 공간</h3>
-                    <p style="color: var(--black);">오직 나만을 위한 조용하고 아늑한 프라이빗 스튜디오.</p>
+    <!-- About Section - 이미지 배경 + 숫자 카운터 -->
+    <section class="counter-section" id="about">
+        <div class="counter-bg" style="background-image: url('images/hall.jpg');"></div>
+        <div class="counter-overlay"></div>
+        <div class="container counter-content">
+            <h2 class="counter-title">왜 The Yoga Sanctuary인가요?</h2>
+            <p class="counter-subtitle">제주에서 가장 프라이빗한 요가 공간, 숫자가 증명합니다.</p>
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-icon">🌿</div>
+                    <div class="counter-number" data-target="1" data-suffix=":1">0</div>
+                    <div class="counter-label">프라이빗 레슨</div>
+                    <div class="counter-desc">오직 나만을 위한 조용하고 아늑한 프라이빗 스튜디오</div>
                 </div>
-                <div class="card" style="background-color: var(--mint);">
-                    <h3>👩‍🏫 전문 강사진</h3>
-                    <p style="color: var(--black);">국제 자격증을 보유한 경력 10년 이상의 전문 강사.</p>
+                <div class="counter-item">
+                    <div class="counter-icon">👩‍🏫</div>
+                    <div class="counter-number" data-target="10" data-suffix="년+">0</div>
+                    <div class="counter-label">강사 평균 경력</div>
+                    <div class="counter-desc">국제 자격증을 보유한 전문 강사진이 지도합니다</div>
                 </div>
-                <div class="card" style="background-color: var(--blue);">
-                    <h3>📱 간편 예약</h3>
-                    <p style="color: var(--black);">원하는 시간에 온라인으로 간편하게 예약하고 관리.</p>
+                <div class="counter-item">
+                    <div class="counter-icon">⭐</div>
+                    <div class="counter-number" data-target="99" data-suffix="%">0</div>
+                    <div class="counter-label">회원 만족도</div>
+                    <div class="counter-desc">재등록률이 증명하는 압도적인 수업 퀄리티</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-icon">📱</div>
+                    <div class="counter-number" data-target="24" data-suffix="H">0</div>
+                    <div class="counter-label">온라인 예약</div>
+                    <div class="counter-desc">원하는 시간에 언제든 간편하게 예약하고 관리</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Counter Animation Script -->
+    <script>
+    (() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter-number');
+                    counters.forEach(el => {
+                        const target = parseInt(el.dataset.target);
+                        const suffix = el.dataset.suffix || '';
+                        const duration = 2000;
+                        const step = Math.ceil(target / (duration / 30));
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            el.textContent = current + suffix;
+                        }, 30);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const section = document.querySelector('.counter-section');
+        if (section) observer.observe(section);
+    })();
+    </script>
 
     <!-- ===== 1. Scrolling Text Banner (Marquee) ===== -->
     <div class="marquee-section">

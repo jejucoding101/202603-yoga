@@ -266,6 +266,98 @@ header {
 .section-mint { background-color: var(--mint); border-top: var(--border); border-bottom: var(--border); }
 .section-blue { background-color: var(--blue); border-top: var(--border); border-bottom: var(--border); }
 
+/* ===== Counter Section (About) ===== */
+.counter-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2rem;
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+.counter-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.35);
+  z-index: 0;
+}
+.counter-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(16,89,53,0.55) 0%, rgba(0,0,0,0.45) 100%);
+  z-index: 1;
+}
+.counter-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.counter-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.counter-subtitle {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+}
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.counter-item {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.counter-item:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.18);
+}
+.counter-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+}
+.counter-number {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1.1;
+}
+.counter-label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 0.3rem;
+}
+.counter-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .counter-title { font-size: 1.6rem; }
+  .counter-number { font-size: 2rem; }
+  .counter-section { padding: 3rem 1rem; }
+}
+
 /* Forms */
 .form-group {
   margin-bottom: 1.5rem;
